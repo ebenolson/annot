@@ -5,18 +5,18 @@ from app.views import view_one, view_two, view_three
 from clize import run
 
 
-def main(imagedir, labeldir=None, classfile=None):
+def main(rootdir, labeldir=None, classfile=None):
     """Create image label annotations
 
-    imagedir: path to directory containing images
+    rootdir: path to directory containing images
 
     labeldir: if specified, alternative directory for labels
 
     classfile: if specified, alternative file containing class mapping
     """
     app.config.from_object(config)
-    app.config['IMAGE_DIR'] = imagedir
-    app.config['LABEL_DIR'] = imagedir if labeldir is None else labeldir
+    app.config['ROOT_DIR'] = rootdir
+    app.config['LABEL_DIR'] = rootdir if labeldir is None else labeldir
     if classfile is None:
         app.config['CLASSFILE'] = '{}/classes.json'.format(
             app.config['LABEL_DIR'])

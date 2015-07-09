@@ -1,15 +1,21 @@
 from flask import Flask, render_template
 from flask_restful import Api
-from .resources.files import imagelist
+from flask.ext.bower import Bower
+
+from .views import filelist
 from .resources.files import image
 
 app = Flask(__name__)
+
+Bower(app)
+
 api = Api(app)
 
-api.add_resource(imagelist, '/imagelist')
 api.add_resource(image,
                  '/image/<name>',
                  '/image/<name>/<int:layer>')
+
+app.register_blueprint(filelist.mod)
 
 
 @app.route('/')

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Annot labeling tool</title>
+    <link href="{{ url_for('bower.static', filename='bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('bower.static', filename='bootstrap-treeview/dist/bootstrap-treeview.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <script src="{{ url_for('bower.static', filename='jquery/dist/jquery.min.js') }}"></script> 
+    <script src="{{ url_for('bower.static', filename='bootstrap-treeview/dist/bootstrap-treeview.min.js') }}"></script> 
+    <div id="imagebox"></div>
+    <div id="dirlist"></div>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+    <script type="text/javascript">
+
+$('#dirlist').load($SCRIPT_ROOT + '/dirlist', function() {
+    $('.imagelink a').click( function() {
+      loadImage(this.target);
+    });
+});
+
+function loadImage(target) {
+    $('#imagebox').empty().html('<img src="'+$SCRIPT_ROOT+'/image/'+target+'"></img>');
+}
+    </script>
+  </body>

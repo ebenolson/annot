@@ -1,0 +1,19 @@
+{
+  "name": "annot",
+  "version": "0.0.1",
+  "authors": [
+    "Eben Olson <eben.olson@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "",
+    "jquery": "",
+  }
+}
