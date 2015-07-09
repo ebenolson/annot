@@ -1,0 +1,6 @@
+{% for file in dirs %}
+    <div class=flash><span class="glyphicon glyphicon-folder-open"></span>{{file}}</div>
+{% endfor %}
+{% for filename, path in images %}
+    <div class=imagelink><span class="glyphicon glyphicon-picture"></span><a target="{{path}}">{{ filename }}</a></div>
+{% endfor %}

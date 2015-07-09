@@ -1,0 +1,49 @@
+/* custom styles */
+
+.container {
+  text-align: center;
+  padding-top: 50px;
+  max-width: 300px;
+}
+
+input{
+  text-align: center;
+  border: 5px solid;
+  padding: 13px 12px;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+ul{
+  margin-left: 20px;
+  text-align: left;
+}
+
+#navbox {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 15%;
+  padding: 10px;
+}
+
+#navbuttons .glyphicon {
+    font-size: 20pt;
+    padding: 4pt;
+}
+
+.glyphicon {
+    padding: 4pt;
+}
+
+svg {
+  font: 10px sans-serif;
+  cursor: crosshair;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+}

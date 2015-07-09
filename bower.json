@@ -15,5 +15,6 @@
   "dependencies": {
     "bootstrap": "",
     "jquery": "",
+    "d3": "~3.5.6"
   }
 }
