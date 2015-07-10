@@ -10,8 +10,11 @@
     <script type="text/javascript">$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script> 
     <script src="{{ url_for('static', filename='scripts/draw.js') }}"></script> 
-
-    <div id="imagebox"></div>
+    <div id="classmapbox"></div>
+    <div id="imagecontainer">
+        <div id="imagebox"></div>
+        <div id="svgbox"></div>
+    </div>
     <div id="navbox">
         <div id="navbuttons">
             <span class="glyphicon glyphicon-arrow-left"></span>

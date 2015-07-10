@@ -11,6 +11,13 @@
   float: left;
 }
 
+#classmapbox {
+  position: relative;
+  height: 30pt;
+  left: 20pt;
+  top: 10pt;
+}
+
 #classmapbox .glyphicon.selected {
   border-style: solid;
   border-color: black;
@@ -52,15 +59,33 @@ ul{
     padding: 4pt;
 }
 
-svg {
+#imagebox {
+  position: relative;
+  left: 20pt;
+  top: 20pt;
+}
+
+#svgbox {
+  position: relative;
+  left: 20pt;
+  top: 20pt;
+}
+
+#imagebox img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+#svg {
   font: 10px sans-serif;
   cursor: crosshair;
   position: absolute;
   left: 0px;
   top: 0px;
-    border-style: solid;
-    border-color: red;
-    border-width: 2px;
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
 }
 
 .green {

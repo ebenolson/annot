@@ -31,13 +31,19 @@ class image(Resource):
 
 
 class label(Resource):
+    def get(self, path, layer=None):
+        if layer is not None:
+            labelfn = path + '_layer{}'.format(layer) + '.svg'
+        else:
+            labelfn = path + '.svg'
+        return send_from_directory(app.config['ROOT_DIR'], labelfn)
+
     def put(self, path, layer=None):
         if layer is not None:
             labelfn = path + '_layer{}'.format(layer) + '.svg'
         else:
             labelfn = path + '.svg'
         labelfn = os.path.join(app.config['ROOT_DIR'], labelfn)
-        print(request.form)
         with open(labelfn, 'w') as file:
-            file.write(request.form['data'])
+            file.write(request.form['svg'])
         return True
