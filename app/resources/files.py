@@ -1,6 +1,7 @@
 import os
 import cStringIO
 from flask import g
+from flask import request
 from flask import send_from_directory
 from flask import send_file
 from flask import jsonify
@@ -27,3 +28,16 @@ class image(Resource):
             return render(name, layer)
         elif ext in app.config['IMAGE_EXTENSIONS']:
             return send_from_directory(app.config['ROOT_DIR'], name)
+
+
+class label(Resource):
+    def put(self, path, layer=None):
+        if layer is not None:
+            labelfn = path + '_layer{}'.format(layer) + '.svg'
+        else:
+            labelfn = path + '.svg'
+        labelfn = os.path.join(app.config['ROOT_DIR'], labelfn)
+        print(request.form)
+        with open(labelfn, 'w') as file:
+            file.write(request.form['data'])
+        return True

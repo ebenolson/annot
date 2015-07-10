@@ -6,11 +6,13 @@ $( document ).ready(function() {
     });
 });
 
-function loadImage(target) {
-    $('#imagebox').empty().append('<img src="'+$SCRIPT_ROOT+'/image/'+target+'"></img>');
+function loadImage(path) {
+    $('#imagebox').empty()
+    .append('<img src="'+$SCRIPT_ROOT+'/image/'+path+'"></img>')
+    .data('path', path)
 
     var tmpImg = new Image() ;
-    tmpImg.src = $('#imagebox img').attr('src') ;
+    tmpImg.src = $('#imagebox img').attr('src')
     tmpImg.onload = function() {
 var svg = d3.select("#imagebox").append("svg")
     .attr("width", $('#imagebox img').width())
@@ -25,4 +27,14 @@ svg
         
     }    
 
+}
+
+function saveLabel(path) {
+  var svg = d3.select('#svg')[0];
+  var svg_xml = (new XMLSerializer).serializeToString(svg[0]);
+  $.ajax({
+        url: $SCRIPT_ROOT+'/label/'+path,
+        type: 'PUT',
+        data: svg_xml
+    });
 }

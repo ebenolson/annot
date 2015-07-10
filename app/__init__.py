@@ -4,6 +4,7 @@ from flask.ext.bower import Bower
 
 from .views import filelist
 from .resources.files import image
+from .resources.files import label
 
 app = Flask(__name__)
 
@@ -14,6 +15,10 @@ api = Api(app)
 api.add_resource(image,
                  '/image/<name>',
                  '/image/<name>/<int:layer>')
+
+api.add_resource(label,
+                 '/label/<path>',
+                 '/image/<path>/<int:layer>')
 
 app.register_blueprint(filelist.mod)
 

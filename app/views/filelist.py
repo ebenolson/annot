@@ -14,6 +14,14 @@ def _shortfn(fn):
         return fn
 
 
+def _labeled(fn, path):
+    labelfn = os.path.join(app.config['ROOT_DIR'],
+                           path,
+                           fn + '.svg')
+    print(labelfn)
+    return os.path.exists(labelfn)
+
+
 @mod.route('/dirlist/')
 @mod.route('/dirlist/<path>')
 def index(path=''):
@@ -23,6 +31,10 @@ def index(path=''):
     dirs = [os.path.join(path, fn) for fn in dirs]
     images = [fn for fn in files
               if fn.split('.')[-1] in app.config['IMAGE_EXTENSIONS']]
-    images = [(_shortfn(fn), os.path.join(path, fn)) for fn in images]
+    images = [(_shortfn(fn),
+               os.path.join(path, fn),
+               _labeled(fn, path),
+               ) for fn in images]
+
     print(images)
     return render_template('files/list.html', images=images, dirs=dirs)
