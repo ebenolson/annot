@@ -6,6 +6,21 @@
   max-width: 300px;
 }
 
+.classbutton {
+  width: 30pt;
+  float: left;
+}
+
+#classmapbox .glyphicon.selected {
+  border-style: solid;
+  border-color: black;
+  border-width: 3pt;  
+}
+
+#classmapbox .glyphicon {
+  font-size: 20pt;
+}
+
 input{
   text-align: center;
   border: 5px solid;

@@ -4,7 +4,18 @@ $( document ).ready(function() {
           loadImage(this.target);
         });
     });
+    $('#classmapbox').load($SCRIPT_ROOT + '/classmap', function() {
+        $('.classbutton a').click( function() {
+          setClass(this.target);
+        });
+    });    
 });
+
+function setClass(target) {
+  console.log(target);
+  $('.classbutton .glyphicon').removeClass('selected');
+  $('.classbutton a[target="'+target+'"] .glyphicon').addClass('selected')
+}
 
 function loadImage(path) {
     $('#imagebox').empty()

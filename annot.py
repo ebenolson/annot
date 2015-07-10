@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import config
+import os
+import shutil
 from app import app
-from app.views import view_one, view_two, view_three
 from clize import run
 
 
@@ -18,14 +19,13 @@ def main(rootdir, labeldir=None, classfile=None):
     app.config['ROOT_DIR'] = rootdir
     app.config['LABEL_DIR'] = rootdir if labeldir is None else labeldir
     if classfile is None:
-        app.config['CLASSFILE'] = '{}/classes.json'.format(
+        app.config['CLASSFILE'] = '{}/classmap.json'.format(
             app.config['LABEL_DIR'])
+        if not os.path.exists(app.config['CLASSFILE']):
+            shutil.copyfile('defaultclassmap.json', app.config['CLASSFILE'])
     else:
         app.config['CLASSFILE'] = classfile
 
-    app.register_blueprint(view_one.mod)
-    app.register_blueprint(view_two.mod)
-    app.register_blueprint(view_three.mod)
     app.run(host="0.0.0.0", port=5000, debug=True)
 
 

@@ -3,6 +3,7 @@ from flask_restful import Api
 from flask.ext.bower import Bower
 
 from .views import filelist
+from .views import classmap
 from .resources.files import image
 from .resources.files import label
 
@@ -21,6 +22,7 @@ api.add_resource(label,
                  '/image/<path>/<int:layer>')
 
 app.register_blueprint(filelist.mod)
+app.register_blueprint(classmap.mod)
 
 
 @app.route('/')
