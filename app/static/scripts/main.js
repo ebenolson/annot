@@ -45,8 +45,10 @@ function saveLabel(path) {
   var path = $('#imagebox').data('path');
   if (path == null) return;
 
-  var svg = d3.select('#svg')[0];
-  var svg_xml = (new XMLSerializer).serializeToString(svg[0]);
+  var svg = d3.select('#svg')[0][0];
+  if (svg.children.length == 0) return;
+
+  var svg_xml = (new XMLSerializer).serializeToString(svg);
   $.ajax({
         url: $SCRIPT_ROOT+'/label/'+path,
         type: 'PUT',
