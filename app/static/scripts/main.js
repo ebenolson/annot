@@ -1,15 +1,20 @@
 $( document ).ready(function() {
-    $('#dirlist').load($SCRIPT_ROOT + '/dirlist', function() {
-        $('.imagelink a').click( function() {
-          loadImage(this.target);
-        });
-    });
+  loadDirectory();
     $('#classmapbox').load($SCRIPT_ROOT + '/classmap', function() {
+        setClass('1');
         $('.classbutton a').click( function() {
           setClass(this.target);
         });
     });    
 });
+
+function loadDirectory() {
+  $('#dirlist').empty().load($SCRIPT_ROOT + '/dirlist', function() {
+      $('.imagelink a').click( function() {
+        loadImage(this.target);
+      });
+  });  
+}
 
 function setClass(target) {
   $('#classmapbox').data('selected', target);
@@ -52,4 +57,6 @@ function saveLabel(path) {
         type: 'PUT',
         data: {'svg': svg_xml}
     });
+
+  loadDirectory();
 }

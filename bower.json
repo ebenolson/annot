@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "",
     "jquery": "",
-    "d3": "~3.5.6"
+    "d3": "~3.5.6",
+    "Keypress": "~2.1.0"
   }
 }
