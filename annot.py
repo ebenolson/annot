@@ -15,9 +15,12 @@ def main(rootdir, labeldir=None, classfile=None):
 
     classfile: if specified, alternative file containing class mapping
     """
+    rootdir = os.path.realpath(rootdir)
+    labeldir = os.path.realpath(labeldir) if labeldir is not None else rootdir
+
     app.config.from_object(config)
     app.config['ROOT_DIR'] = rootdir
-    app.config['LABEL_DIR'] = rootdir if labeldir is None else labeldir
+    app.config['LABEL_DIR'] = labeldir
     if classfile is None:
         app.config['CLASSFILE'] = '{}/classmap.json'.format(
             app.config['LABEL_DIR'])
