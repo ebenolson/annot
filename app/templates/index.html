@@ -11,16 +11,23 @@
     <script type="text/javascript">$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script> 
     <script src="{{ url_for('static', filename='scripts/draw.js') }}"></script> 
-    <div id="classmapbox"></div>
+    <div id="header">
+        <div id="classmapbox" class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+          </div>            
+        </div>
+        <div id="toolbox" class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <button type="button" target="dottool" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span></button>
+            <button type="button" target="boxtool" class="btn btn-default" aria-label="Center Align"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span></button>
+            <button type="button" target="pentool" class="btn btn-default" aria-label="Right Align"><span class="toolbutton glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+            <button type="button" target="erasertool" class="btn btn-default" aria-label="Justify"><span class="toolbutton glyphicon glyphicon-erase" aria-hidden="true"></span></button>
+          </div>
+    </div>        
+    </div>
     <div id="imagecontainer">
         <div id="imagebox"></div>
         <div id="svgbox"></div>
-    </div>
-    <div id="toolbox">
-        <span class="glyphicon glyphicon-screenshot"></span>
-        <span class="glyphicon glyphicon-unchecked"></span>
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="glyphicon glyphicon-erase"></span>
     </div>
     <div id="navbox">
         <div id="navbuttons">

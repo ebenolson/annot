@@ -1,29 +1,41 @@
 $( document ).ready(function() {
   loadDirectory();
-    $('#classmapbox').load($SCRIPT_ROOT + '/classmap', function() {
+    $('#classmapbox .btn-group').load($SCRIPT_ROOT + '/classmap', function() {
         setClass('1');
-        $('.classbutton a').click( function() {
-          setClass(this.target);
+        $('#classmapbox button').click( function() {
+          setClass($(this).attr('target'));
+        });
+        $('#toolbox button').click( function() {
+          setTool($(this).attr('target'));
         });
     });    
 });
 
 function loadDirectory() {
   $('#dirlist').empty().load($SCRIPT_ROOT + '/dirlist', function() {
-      $('.imagelink a').click( function() {
+      $('.imagelink a').click( function(e) {
         loadImage(this.target);
       });
   });  
 }
 
+function setTool(target) {
+  $('#toolbox').data('selected', target);
+  $('#toolbox button').removeClass('selected');
+  $('#toolbox button[target="'+target+'"]').addClass('selected')
+}
+
+
 function setClass(target) {
   $('#classmapbox').data('selected', target);
-  $('.classbutton .glyphicon').removeClass('selected');
-  $('.classbutton a[target="'+target+'"] .glyphicon').addClass('selected')
+  $('#classmapbox button').removeClass('selected');
+  $('#classmapbox button[target="'+target+'"]').addClass('selected')
 }
 
 function loadImage(path) {
   saveLabel();
+  $('.imagelink a').removeClass('selected');
+  $('.imagelink a[target="'+path+'"]').addClass('selected');
 
   $('#imagebox').empty()
   .append('<img src="'+$SCRIPT_ROOT+'/image/'+path+'"></img>')

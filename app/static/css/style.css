@@ -6,26 +6,48 @@
   max-width: 300px;
 }
 
+#header {
+  width: 100%;
+  display:inline-block;
+}
+
+#toolbox {
+  float: left;
+  max-width: 20%;
+  margin: 10pt;
+}
+
+#toolbox .glyphicon {
+  font-size: 20pt;
+  padding: 4pt;
+  display: inline-block;
+  vertical-align: middle  
+}
+
+#toolbox .selected {
+  background-color: #BBBBBB;
+}
+
 .classbutton {
   width: 30pt;
   float: left;
 }
 
 #classmapbox {
-  position: relative;
-  height: 30pt;
-  left: 20pt;
-  top: 10pt;
+  float: left;
+  max-width: 50%;
+  margin: 10pt;
 }
 
-#classmapbox .glyphicon.selected {
-  border-style: solid;
-  border-color: black;
-  border-width: 3pt;  
+#classmapbox .selected {
+  background-color: #BBBBBB;
 }
 
 #classmapbox .glyphicon {
-  font-size: 20pt;
+  font-size: 28pt;
+  padding: 1pt;
+  display: inline-block;
+  vertical-align: middle  
 }
 
 input{
@@ -43,11 +65,15 @@ ul{
 }
 
 #navbox {
-  position: absolute;
+  position: relative;
+  float: right;
   top: 0px;
-  right: 0px;
   width: 15%;
-  padding: 10px;
+  margin-right: 10pt;
+  padding: 10pt;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 #navbuttons .glyphicon {
@@ -56,7 +82,8 @@ ul{
 }
 
 .glyphicon {
-    padding: 4pt;
+    vertical-align: middle;
+    margin-right: 4pt;
 }
 
 #imagebox {
@@ -90,4 +117,12 @@ ul{
 
 .green {
   color: green;
+}
+
+.imagelink a {
+  cursor: pointer;
+}
+
+.imagelink a.selected {
+  color: red;
 }
