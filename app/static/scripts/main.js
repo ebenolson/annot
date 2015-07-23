@@ -2,6 +2,7 @@ $( document ).ready(function() {
   loadDirectory();
     $('#classmapbox .btn-group').load($SCRIPT_ROOT + '/classmap', function() {
         setClass('1');
+        setTool('dottool');
         $('#classmapbox button').click( function() {
           setClass($(this).attr('target'));
         });
@@ -23,13 +24,25 @@ function setTool(target) {
   $('#toolbox').data('selected', target);
   $('#toolbox button').removeClass('selected');
   $('#toolbox button[target="'+target+'"]').addClass('selected')
+  setupDrawing();
 }
-
 
 function setClass(target) {
   $('#classmapbox').data('selected', target);
   $('#classmapbox button').removeClass('selected');
   $('#classmapbox button[target="'+target+'"]').addClass('selected')
+}
+
+function setupDrawing() {
+  $("#svgbox svg").children().off("mousedown");
+  d3.select("#svgbox").on("mousedown", null);
+
+  tool = $('#toolbox').data('selected');
+  if (tool == 'boxtool') d3.select("#svgbox").on("mousedown", drawRect);
+  else if (tool == 'dottool') d3.select("#svgbox").on("mousedown", drawDot);
+  else if (tool == 'erasertool') {
+    $("#svgbox svg").children().on("mousedown", function() {$(this).remove()});
+  }
 }
 
 function loadImage(path) {
@@ -54,7 +67,8 @@ function loadImage(path) {
 
       }
     });
-    d3.select("#svgbox").on("mousedown", drawRect);
+    
+    setupDrawing();    
   }
 }
 

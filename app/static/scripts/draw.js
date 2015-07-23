@@ -1,17 +1,24 @@
 var drawing = false;
 
-function drawMarker() {
+function useEraser() {
+  
+}
+
+function drawDot() {
   svg = d3.select('#svg');
   point = d3.mouse(this);
 
   var cls = $('#classmapbox').data('selected');
-  var color = $('.classbutton a[target="'+cls+'"]').css('color');
+  var color = $('#classmapbox button[target="'+cls+'"]').css('color');
   console.log(color);
   svg.append("circle")
   .attr("cx", point[0])
   .attr("cy", point[1])
   .attr("r", 10)
   .attr("fill", color)
+  .style("fill-opacity", 0.5)
+  .attr("stroke", "white")
+  .attr("stroke-width", 2)
   .attr("class", cls);
 }
 
@@ -22,7 +29,7 @@ function drawRect() {
   svg = d3.select('#svg');
   point = d3.mouse(this); 
   var cls = $('#classmapbox').data('selected');
-  var color = $('.classbutton a[target="'+cls+'"]').css('color');
+  var color = $('#classmapbox button[target="'+cls+'"]').css('color');
 
   svg.append("rect")
   .attr("x", point[0])
