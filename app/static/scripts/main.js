@@ -40,6 +40,7 @@ function setupDrawing() {
   tool = $('#toolbox').data('selected');
   if (tool == 'boxtool') d3.select("#svgbox").on("mousedown", drawRect);
   else if (tool == 'dottool') d3.select("#svgbox").on("mousedown", drawDot);
+  else if (tool == 'pentool') d3.select("#svgbox").on("mousedown", startPen);
   else if (tool == 'erasertool') {
     $("#svgbox svg").children().on("mousedown", function() {$(this).remove()});
   }
