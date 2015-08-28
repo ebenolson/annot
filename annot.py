@@ -4,9 +4,10 @@ import os
 import shutil
 from app import app
 from clize import run
+from sigtools.modifiers import kwoargs
 
-
-def main(rootdir, labeldir=None, classfile=None):
+@kwoargs('labeldir', 'classfile', 'port')
+def main(rootdir, labeldir=None, classfile=None, port=5000):
     """Create image label annotations
 
     rootdir: path to directory containing images
@@ -29,7 +30,7 @@ def main(rootdir, labeldir=None, classfile=None):
     else:
         app.config['CLASSFILE'] = classfile
 
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)
 
 
 if __name__ == '__main__':
